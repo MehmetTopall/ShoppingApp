@@ -1,0 +1,69 @@
+<div id="product-row" class="row">
+  <div class="col-6 col-md-6"><h3>Ürün İşlemleri Sayfası</h3></div>
+  <div class="col-6 col-md-6">
+      <button id="buttons" class="btn btn-success" routerLink="/products/categories">Kategoriler</button>
+      <button id="buttons" class="btn btn-success" routerLink="/products">Ürünler</button>
+  </div>
+</div>
+<hr>
+<div class="container">
+    <br>
+    <form id="form" #myForm="ngForm">
+      <div class="form-group">
+        <label for="exampleInputEmail1" class="form-label">Ürün Adı</label>
+        <input type="email" class="form-control" name="title" aria-describedby="emailHelp" 
+        [(ngModel)]="productObj.title">
+      </div><br>
+      <div class="form-group">
+        <label for="inputState" class="form-label">Kategori</label>
+        <select id="inputState" class="form-select" name="category" [(ngModel)]="productObj.category">
+          <option selected>Seçiniz...</option>
+          <option value="1">1 - electronics</option>
+          <option value="2">2 - jewelery</option>
+          <option value="3">3 - men's clothing</option>
+          <option value="4">4 - women's clothing</option>
+        </select>
+      </div><br>
+    
+      <div class="form-group">
+        <label for="exampleInputEmail1" class="form-label">Açıklama</label>
+        <input type="email" class="form-control" name="description"  aria-describedby="emailHelp" [(ngModel)]="productObj.description">
+      </div><br>
+      <div class="form-group">
+        <label for="exampleInputEmail1" class="form-label">Fiyat</label>
+        <input type="email" class="form-control" name="price" [(ngModel)]="productObj.price">
+      </div><br>
+      <div class="form-group">
+        <label for="formFile" class="form-label">Resim</label>
+        <input class="form-control" type="file" name="image" [(ngModel)]="productObj.image">
+      </div><br>
+      <button type="button" class="btn btn-primary" (click)="addProduct(myForm.value)" *ngIf="!isEdit">Ekle</button>
+      <button type="button" class="btn btn-primary" (click)="updateProduct()"
+      *ngIf="isEdit">Güncelle</button>
+    </form>
+    <br>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Görsel</th>
+          <th scope="col">Ürün Adı</th>
+          <th scope="col">Kategori</th>
+          <th scope="col">Açıklama</th>
+          <th scope="col">Fiyat</th>
+          <th scope="col">Düzenle</th>
+          <th scope="col">Sil</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let product of allProduct">
+        <td><img src={{product.image}} style="width: 50px;height: 50px;"></td>
+        <td>{{product.title}}</td>
+        <td>{{product.category}}</td>
+        <td>{{product.description}}</td>
+        <td>{{product.price | currency: 'TL '}}</td>
+        <td><button class="btn btn-warning" (click)="editProduct(product)">Düzenle</button></td>
+        <td><button class="btn btn-danger" (click)="deleteProduct(product)">Sil</button></td>
+      </tr>
+      </tbody>
+    </table>
+</div>

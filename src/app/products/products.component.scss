@@ -1,0 +1,23 @@
+.example-card {
+    max-width: 400px;
+    margin-bottom: 8px;
+  }
+  .mat-card-title-group{
+    cursor:pointer;
+  }
+  .limitTextHeight {
+    height: 20px;
+    overflow: hidden;
+}
+.fontsize{
+  font-size: 12px;
+}
+#product-row{
+  margin-top: 30px;
+  margin-left: 30px;
+  color:white;
+}
+#buttons{
+  float:right;
+  margin-right: 30px;
+}
